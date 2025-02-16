@@ -1,0 +1,253 @@
+/* Original styles remain the same */
+.topdiv {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.topicon {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  min-width: 15rem;
+  border-radius: 0.5rem;
+  border: 2px solid #e5e7eb;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.topicon:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-color: #3b82f6;
+}
+
+.topicon svg {
+  width: 3rem;
+  height: 3rem;
+  color: #3b82f6;
+}
+
+.toptextstyle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #374151;
+  margin: 0;
+}
+
+.topsecpara {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Updated appointment styles */
+.dashappoiment {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  margin: 2.5rem 0 1.5rem 0;
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.dashappoiment svg {
+  width: 2rem;
+  height: 2rem;
+  color: #3b82f6;
+}
+
+.dashpara {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+/* Enhanced appointment card styles */
+.mainDiv {
+  width: 100%;
+  padding: 1.25rem;
+}
+
+.heading {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.divContainer {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Header row */
+.gridContainer {
+  background-color: #f9fafb;
+  padding: 1rem;
+  font-weight: 500;
+  color: #374151;
+  display: none; /* Hidden on mobile */
+}
+
+@media (min-width: 768px) {
+  .gridContainer {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr 2fr 2fr 1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+
+/* Data row */
+.divIndex {
+  padding: 1rem;
+  color: #6b7280;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .divIndex {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr 2fr 2fr 1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+
+.divIndex:hover {
+  background-color: #f9fafb;
+}
+
+/* Mobile labels */
+.mobileLabel {
+  font-weight: 500;
+  color: #374151;
+  display: inline-block;
+  width: 100px;
+  margin-right: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .mobileLabel {
+    display: none;
+  }
+}
+
+/* User info */
+.userDiv {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.imgUser {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+/* Hide index on mobile */
+.hideOnMobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hideOnMobile {
+    display: block;
+  }
+}
+
+/* Action buttons */
+.actionButtons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.actionButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border: none;
+}
+
+.completeButton {
+  background-color: #d1fae5;
+  color: #059669;
+}
+
+.completeButton:hover {
+  background-color: #a7f3d0;
+}
+
+.cancelButton {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.cancelButton:hover {
+  background-color: #fecaca;
+}
+
+/* Status badges */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  width: fit-content;
+}
+
+.statusPending {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.statusCompleted {
+  background-color: #d1fae5;
+  color: #059669;
+}
+
+.cancelledBadge {
+  background-color: #fee2e2;
+  color: #dc2626;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+}
+
+/* Data item wrapper for mobile */
+.dataItem {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .dataItem {
+    display: block;
+  }
+}

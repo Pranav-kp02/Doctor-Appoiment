@@ -1,0 +1,145 @@
+/* Main Container */
+.doctor-main {
+  margin-top: 5rem;
+  gap: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+@media (min-width: 640px) {
+  .doctor-main {
+    flex-direction: row; /* Side-by-side layout on larger screens */
+    gap: 1.25rem;
+  }
+}
+
+/* Sidebar */
+.doc-side-bar {
+  flex: 1;
+  max-width: 250px; /* Set a max width for the sidebar */
+  overflow-y: auto; /* Allow vertical scrolling only */
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+.doc-side-bar::-webkit-scrollbar {
+  height: 3px;
+}
+
+.doc-side-bar::-webkit-scrollbar-thumb {
+  background-color: #3b82f6;
+  border-radius: 10px;
+}
+
+.doc-side-para {
+  cursor: pointer;
+  border: 1px solid rgb(209, 213, 219);
+  border-radius: 0.25rem;
+  text-align: center;
+  padding: 1rem 0;
+  margin: 0.5rem 0;
+  transition: all 0.3s ease;
+}
+
+.doc-side-para:hover {
+  background-color: #eff6ff;
+  color: #1e40af;
+  border-color: #3b82f6;
+  font-weight: 600;
+}
+
+/* Doctor List Grid */
+.doctor-list {
+  flex: 3; /* Take remaining space beside the sidebar */
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px, 1fr)
+  ); /* Responsive grid */
+  gap: 1rem;
+  row-gap: 1.5rem;
+  padding: 1rem;
+  width: 100%; /* Ensure it doesn't overflow */
+}
+
+/* Doctor Card */
+.doctors-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  background-color: #ffffff;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.doctors-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.doc-img-color {
+  width: 100%;
+  background-color: #f3f4f6;
+  object-fit: cover; /* Ensure the image scales properly */
+}
+.doc-img-color:hover {
+  background-color: #e0f2fe;
+}
+
+/* Card Content */
+.p-4 {
+  padding: 1rem;
+}
+
+.doc-avlb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #22c55e;
+}
+
+.doc-avlb-sybol {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #10b981;
+  border-radius: 50%;
+}
+
+.doc-text-name {
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin: 0.5rem 0;
+  color: #1f2937;
+}
+
+.doc-specality {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 640px) {
+  .doctor-main {
+    flex-direction: column;
+  }
+
+  .doc-side-bar {
+    overflow-x: auto; /* Prevent overflow */
+    margin-bottom: 1rem;
+  }
+
+  .doctor-list {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(200px, 1fr)
+    ); /* Adjust for smaller screens */
+  }
+}

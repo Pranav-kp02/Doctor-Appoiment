@@ -1,0 +1,218 @@
+/* Container */
+.container {
+  max-width: 64rem; /* Tailwind's max-w-4xl */
+  margin: 5rem auto;
+  background-color: #ffffff;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem; /* rounded-lg */
+  overflow: hidden;
+  padding: 1.5rem; /* p-6 */
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem; /* mb-6 */
+}
+
+.title {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 600; /* font-semibold */
+  color: #2d3748; /* text-gray-800 */
+}
+
+/* Update Button */
+.updateButton {
+  padding: 0.5rem 1rem; /* py-2 px-4 */
+  background-color: #2563eb; /* blue-600 */
+  color: #ffffff;
+  border: none;
+  border-radius: 0.375rem; /* rounded-md */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.updateButton:hover {
+  background-color: #1d4ed8; /* blue-700 */
+}
+
+/* Main layout */
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* gap-6 */
+}
+
+@media (min-width: 768px) {
+  .mainContent {
+    flex-direction: row;
+  }
+}
+
+/* Profile Image Section */
+.profileImageSection {
+  flex: 0 0 25%; /* md:w-1/4 */
+}
+
+.imageContainer {
+  background-color: #ebf8ff; /* blue-50 */
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imagePlaceholder {
+  width: 8rem; /* w-32 */
+  height: 8rem; /* h-32 */
+  border-radius: 50%;
+  background-color: #dbeafe; /* approximate blue-100 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem; /* mb-4 */
+  font-size: 2.5rem; /* text-4xl */
+}
+
+.imagePlaceholder img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.availableBadge {
+  padding: 0.25rem 0.75rem; /* px-3 py-1 */
+  background-color: #d1fae5; /* green-100 */
+  color: #047857; /* green-800 */
+  border-radius: 9999px;
+  font-size: 0.875rem; /* text-sm */
+}
+
+/* Content Section */
+.contentSection {
+  flex: 1;
+}
+
+/* Information Grid */
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .infoGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Info Groups (Personal & Professional) */
+.infoGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Labels and Values */
+.label {
+  font-size: 0.875rem; /* text-sm */
+  color: #718096; /* text-gray-500 */
+}
+
+.value {
+  font-size: 1.125rem; /* text-lg */
+  margin-top: 0.25rem;
+}
+
+/* Font Weight */
+.fontSemibold {
+  font-weight: 600;
+}
+
+/* Fee color override */
+.fee {
+  color: #10b981; /* green-600 */
+}
+
+/* About Section */
+.aboutSection {
+  margin-top: 1.5rem; /* mt-6 */
+}
+
+.aboutLabel {
+  font-size: 0.875rem;
+  color: #718096;
+}
+
+.aboutText {
+  margin-top: 0.5rem; /* mt-2 */
+  color: #4a5568; /* text-gray-600 */
+}
+
+/* Input fields */
+.inputField {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border: 1px solid #cbd5e0; /* gray-300 */
+  border-radius: 0.375rem; /* rounded-md */
+  font-size: 1rem;
+}
+
+/* Textarea fields */
+.textareaField {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+}
+
+/* Button Group for Save and Cancel */
+.buttonGroup {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.saveButton {
+  padding: 0.5rem 1rem;
+  background-color: #10b981; /* green-600 */
+  color: #ffffff;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.saveButton:hover {
+  background-color: #059669; /* green-700 */
+}
+
+.cancelButton {
+  padding: 0.5rem 1rem;
+  background-color: #e53e3e; /* red-600 */
+  color: #ffffff;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cancelButton:hover {
+  background-color: #c53030; /* red-700 */
+}
+
+/* Error message styling */
+.errorText {
+  color: #e53e3e;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}

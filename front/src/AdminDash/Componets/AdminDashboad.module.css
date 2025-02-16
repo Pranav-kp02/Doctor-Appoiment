@@ -1,0 +1,177 @@
+/* Original styles remain the same */
+.topdiv {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.topicon {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  min-width: 15rem;
+  border-radius: 0.5rem;
+  border: 2px solid #e5e7eb;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.topicon:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-color: #3b82f6;
+}
+
+.topicon svg {
+  width: 3rem;
+  height: 3rem;
+  color: #3b82f6;
+}
+
+.toptextstyle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #374151;
+  margin: 0;
+}
+
+.topsecpara {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Updated appointment styles */
+.dashappoiment {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  margin: 2.5rem 0 1.5rem 0;
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.dashappoiment svg {
+  width: 2rem;
+  height: 2rem;
+  color: #3b82f6;
+}
+
+.dashpara {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+/* Enhanced appointment card styles */
+.dashbooklatediv {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.dashbooklatediv:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-color: #3b82f6;
+}
+
+.dashbookimg {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 9999px;
+  object-fit: cover;
+  border: 3px solid #3b82f6;
+  padding: 2px;
+  background-color: #ffffff;
+}
+
+.dasbookdetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dashbookpara1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 0.5rem 0;
+}
+
+.dashbookpara2 {
+  font-size: 0.95rem;
+  color: #4b5563;
+  margin: 0.25rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dashbookhr {
+  margin: 1rem 0 0.5rem 0;
+  border: none;
+  border-top: 1px solid #e5e7eb;
+}
+
+.nodatamessage {
+  text-align: center;
+  padding: 3rem;
+  background-color: #f9fafb;
+  border-radius: 0.75rem;
+  color: #6b7280;
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  border: 2px dashed #e5e7eb;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dashbooklatediv {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .dashbookimg {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .dasbookdetails {
+    width: 100%;
+  }
+}
+
+/* Status colors */
+.dashbookpara2[data-status="completed"] {
+  color: #059669;
+}
+
+.dashbookpara2[data-status="pending"] {
+  color: #d97706;
+}
+
+.dashbookpara2[data-status="cancelled"] {
+  color: #dc2626;
+}

@@ -1,0 +1,27 @@
+# Ignore environment files
+.env
+dot.env
+
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Build files
+dist/
+build/
+
+# Editor/IDE settings
+.vscode/
+.idea/
+*.swp

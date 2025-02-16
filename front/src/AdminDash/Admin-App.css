@@ -1,0 +1,44 @@
+.main-admin {
+  display: flex;
+  margin-top: 5rem;
+}
+.list-admin {
+  color: #515151;
+  border-right: 1px solid #4c4e53;
+  background-color: white;
+  padding-left: 0%;
+}
+
+.side-navLink {
+  color: rgb(33, 28, 28);
+  display: flex;
+  gap: 0.75rem;
+  padding-top: 0.875rem;
+  padding-left: 2.75rem;
+  padding-right: 0.75rem;
+  width: 200px;
+  font-family: "Fjalla One", serif;
+}
+.side-navLink:hover {
+  color: rgb(33, 28, 28);
+}
+.sideBar-selected {
+  background-color: #f2f3ff;
+
+  border-right: 3px solid #5f6fff;
+}
+
+.side-navLink:hover {
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .main-admin {
+    flex-direction: column;
+  }
+  .side-navLink {
+    width: 100%;
+    padding-left: 1rem;
+  }
+}

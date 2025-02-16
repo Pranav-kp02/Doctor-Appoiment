@@ -1,0 +1,115 @@
+.main-rel-doc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+  color: #1a202c;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.rel-doc-head {
+  font-size: 1.625rem;
+  font-weight: 600;
+  color: #2d3748;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.rel-doc-para {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #4a5568;
+  margin-bottom: 1.5rem;
+}
+
+.doctor-list-related {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centering the cards horizontally */
+  gap: 1.25rem;
+
+  padding: 0 1rem;
+}
+
+.rel-doctors-card-related {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 220px; /* Set a fixed width for the cards */
+  margin: 0 auto; /* Center the card */
+}
+
+.rel-doctors-card-related:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.15);
+}
+
+.rel-doc-img-color {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.rel-doc-avlb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rel-doc-avlb-sybol {
+  width: 10px;
+  height: 10px;
+  background-color: green;
+  border-radius: 50%;
+}
+
+.rel-doc-text-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+.rel-doc-specality {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .main-rel-doc {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .rel-doc-head {
+    font-size: 1.5rem;
+  }
+
+  .doctor-list-related {
+    gap: 1rem;
+    justify-content: center; /* Ensure the cards are centered */
+  }
+
+  .doctors-card-related {
+    width: 180px; /* Adjust width for smaller screens */
+  }
+
+  .doc-img-color {
+    height: 150px;
+  }
+
+  .doc-text-name {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,319 @@
+.mainDiv {
+  width: 100%;
+  padding: 1.25rem;
+}
+
+.heading {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.divContainer {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Header row */
+.gridContainer {
+  background-color: #f9fafb;
+  padding: 1rem;
+  font-weight: 500;
+  color: #374151;
+  display: none; /* Hidden on mobile */
+}
+
+@media (min-width: 768px) {
+  .gridContainer {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr 2fr 1fr 2fr 1fr;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+
+/* Data row */
+.divIndex {
+  padding: 1rem;
+  color: #6b7280;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .divIndex {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr 2fr 1fr 2fr 1fr;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+
+.divIndex:hover {
+  background-color: #f9fafb;
+}
+
+/* Mobile labels */
+.mobileLabel {
+  font-weight: 500;
+  color: #374151;
+  display: inline-block;
+  width: 100px;
+  margin-right: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .mobileLabel {
+    display: none;
+  }
+}
+
+/* User info */
+.userDiv {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.imgUser {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+/* Hide index on mobile */
+.hideOnMobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hideOnMobile {
+    display: block;
+  }
+}
+
+/* Action buttons */
+.actionButtons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.actionButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border: none;
+}
+
+.completeButton {
+  background-color: #d1fae5;
+  color: #059669;
+}
+
+.completeButton:hover {
+  background-color: #a7f3d0;
+}
+
+.cancelButton {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.cancelButton:hover {
+  background-color: #fecaca;
+}
+
+/* Status badges */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  width: fit-content;
+}
+
+.statusPending {
+  background-color: #fef3c7;
+  color: #d97706;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  width: fit-content;
+}
+
+.statusCompleted {
+  background-color: #d1fae5;
+  color: #059669;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  width: fit-content;
+}
+
+.statusApproved {
+  background-color: #3b82f6; /* Blue */
+  color: #1e40af;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  width: fit-content;
+  color: whitesmoke;
+}
+
+.cancelledBadge {
+  background-color: #fee2e2;
+  color: #dc2626;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+}
+
+/* Data item wrapper for mobile */
+.dataItem {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .dataItem {
+    display: block;
+  }
+}
+
+.filterContainer {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.filterButton {
+  padding: 0.5rem 1rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filterButton:hover {
+  background-color: #2563eb;
+}
+
+.filterDropdown {
+  position: absolute;
+  top: 2.5rem;
+  left: 0;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 150px;
+  display: none;
+  flex-direction: column;
+}
+
+.filterDropdown.show {
+  display: flex;
+}
+
+.filterOption {
+  padding: 0.5rem;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.875rem;
+}
+
+.filterOption:hover {
+  background-color: #f3f4f6;
+}
+
+/* More Dropdown Button */
+.moreDropdownButton {
+  padding: 0.375rem 0.75rem;
+  background-color: #e5e7eb;
+  color: #4b5563;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  position: relative;
+}
+
+/* More Dropdown Menu */
+.moreDropdownMenu {
+  position: absolute;
+  top: 2.5rem;
+  left: 0;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 150px;
+  display: none;
+  flex-direction: column;
+}
+
+.moreDropdownMenu.show {
+  display: flex;
+}
+
+/* Dropdown Option */
+.moreDropdownOption {
+  padding: 0.5rem;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.875rem;
+}
+
+.moreDropdownOption:hover {
+  background-color: #f3f4f6;
+}
+
+.dropdownToggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.extraDetailsDropdown {
+  width: 100%;
+  background-color: #f9fafb;
+  padding: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.dropdownContent {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  color: #4b5563;
+}
+
+.dropdownContent div {
+  background-color: #ffffff;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+}

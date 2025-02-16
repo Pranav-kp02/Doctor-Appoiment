@@ -1,0 +1,105 @@
+/* .registrationContainer {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+/* .formRow {
+  width: 100%;
+} */
+
+.formColumn {
+  display: flex;
+  justify-content: center;
+}
+
+.formWrapper {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.formTitle {
+  color: #333;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.formSubtitle {
+  color: #666;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formControl {
+  border-radius: 25px;
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+}
+
+.formControl:focus {
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+  border-color: #667eea;
+}
+
+.validFeedback {
+  color: #28a745;
+}
+
+.invalidFeedback {
+  color: #dc3545;
+}
+
+.passwordWrapper {
+  position: relative;
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+  z-index: 10;
+}
+
+.forgotPassword {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.forgotPassword a {
+  color: #667eea;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgotPassword a:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 12px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.submitButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
+}

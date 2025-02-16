@@ -1,0 +1,171 @@
+/* Main Container */
+.docList-admin-main {
+  padding: 2rem;
+  min-height: 100vh;
+  background-color: #f8fafc;
+}
+
+/* Header */
+.docList-admin-head {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* Flex Container for Cards */
+.docList-admin-div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Doctor Card */
+.docList-admin-map {
+  flex: 1;
+  min-width: 300px;
+  max-width: 300px;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.docList-admin-map:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.15);
+}
+
+/* Doctor Image */
+.docList-admin-img {
+  width: 100%;
+  object-fit: cover;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Doctor Info Container */
+.docList-admin-sidePara {
+  padding: 1.5rem;
+}
+
+/* Doctor Name */
+.docList-admin-para1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+/* Doctor Details */
+.docList-admin-para2 {
+  font-size: 1rem;
+  color: #475569;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Bottom Section */
+.doc-list-Bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Availability Toggle Section */
+.docList-admin-input {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Custom Checkbox */
+.docList-admin-input input[type="checkbox"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid #3b82f6;
+  border-radius: 4px;
+  cursor: pointer;
+  accent-color: #3b82f6;
+}
+
+/* Availability Text */
+.docList-admin-input-paraa {
+  font-size: 0.95rem;
+  color: #475569;
+  font-weight: 500;
+}
+
+/* Delete Icon */
+.doc-list-Bottom svg {
+  color: #ef4444;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+
+  border-radius: 50%;
+}
+
+.doc-list-Bottom svg:hover {
+  color: #dc2626;
+  background-color: #fee2e2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .docList-admin-main {
+    padding: 1rem;
+  }
+
+  .docList-admin-head {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .docList-admin-map {
+    min-width: 100%;
+  }
+}
+
+/* Loading State */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  font-size: 1.25rem;
+  color: #64748b;
+}
+
+/* Empty State */
+.docList-admin-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #64748b;
+  font-size: 1.25rem;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .docList-admin-map {
+    transition: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

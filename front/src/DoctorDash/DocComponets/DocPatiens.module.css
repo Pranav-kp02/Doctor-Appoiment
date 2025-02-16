@@ -1,0 +1,248 @@
+/* Container Styling */
+.container {
+  margin: 2rem;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+
+/* Card-Like Wrapper with Borders */
+.wrapper {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 900px;
+  border: 1px solid #e5e7eb;
+}
+
+/* Header Styling with Border */
+.header {
+  padding: 1.5rem;
+  background-color: #3b82f6;
+  color: white;
+  text-align: center;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Table Styling */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableHeader th {
+  background: #f9fafb;
+  text-align: center;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.tableRow {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tableRow:hover {
+  background: #f1f5f9;
+}
+
+/* Table Cell */
+.tableCell {
+  padding: 1rem;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 1rem;
+  border-right: 1px solid #e5e7eb;
+}
+
+.tableCell:last-child {
+  border-right: none;
+}
+
+/* User Info Styling */
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.userImage {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #3b82f6;
+}
+
+.defaultUserIcon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #4b5563;
+}
+
+/* User Details */
+.userName {
+  font-weight: 600;
+  color: #111827;
+}
+
+.userEmail {
+  color: #4b5563;
+}
+
+/* Status Badges */
+.statusGroup {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.badge {
+  padding: 0.35rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badgeCompleted {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.badgePending {
+  background: #fef9c3;
+  color: #854d0e;
+}
+
+.badgeCancelled {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* No Users */
+.noUsers {
+  padding: 2rem;
+  text-align: center;
+  color: #6b7280;
+}
+
+/* View Button */
+.viewButton {
+  padding: 0.5rem 1rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0 4px 8px rgba(96, 165, 250, 0.3);
+}
+
+.viewButton:hover {
+  background-color: #2563eb;
+}
+
+.viewButton:active {
+  background-color: #1d4ed8;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    margin: 1rem;
+  }
+
+  .wrapper {
+    min-width: 100%;
+  }
+
+  .userInfo {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .statusGroup {
+    flex-direction: column;
+  }
+
+  .tableCell {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+
+  /* Table Cell Borders */
+  .tableCell {
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  /* Remove last cell border */
+  .tableRow:last-child .tableCell {
+    border-bottom: none;
+  }
+
+  .viewButton {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  /* For smaller screens, stack table vertically */
+  .table {
+    display: block;
+  }
+
+  .tableHeader {
+    display: none;
+  }
+
+  .tableRow {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 1rem;
+  }
+
+  .tableCell {
+    border: none;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+  }
+
+  .viewButton {
+    width: 100%;
+    padding: 0.6rem;
+    text-align: center;
+  }
+
+  .userInfo {
+    flex-direction: row;
+  }
+}
+
+.userBan {
+  border: 1px solid red;
+  font-size: xx-small;
+  border-radius: 99px;
+  background-color: red;
+  margin-left: 5px;
+  color: white;
+  padding: 2px;
+}

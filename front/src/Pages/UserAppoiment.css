@@ -1,0 +1,153 @@
+.myAppoi-header {
+  padding-bottom: 0.75rem;
+  margin-top: 7rem;
+  font-weight: 500;
+  border-bottom: 1px solid;
+  color: rgb(63 63 70 / var(--tw-text-opacity, 1));
+}
+
+.myAppoi-doc-card {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  gap: 1rem;
+  border-bottom: 1px solid;
+}
+
+@media (min-width: 640px) {
+  .myAppoi-doc-card {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .myAppoi-cancel-btn {
+    min-width: 12rem;
+  }
+}
+
+.myAppoi-img {
+  width: 8rem;
+  background-color: #f0f9ff;
+}
+
+.myAppoi-content {
+  flex: 1;
+  font-size: 0.875rem;
+  color: #71717a;
+}
+
+.myAppoi-name {
+  color: #333333;
+  font-weight: 600;
+}
+
+.myAppoi-address {
+  color: #71717a;
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
+
+.myAppoi-address-line {
+  font-size: 0.75rem;
+}
+
+.myAppoi-p-span {
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  color: rgb(4, 157, 4);
+  display: flex;
+  gap: 5px;
+}
+
+.myAppoi-span {
+  font-size: 0.875rem;
+  color: #71717a;
+  font-weight: 500;
+}
+
+.myAppoi-div-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.myAppoi-cancel-btn {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0.25rem;
+  border-width: 1px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.myAppoi-cancel-btn:hover {
+  color: #ffffff;
+  background-color: #dc2626;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.cancelled-btn {
+  background-color: #ddd; /* Light gray background */
+  color: #777; /* Dark gray text */
+  border: none;
+  cursor: not-allowed;
+  font-weight: bold;
+  padding: 8px 12px;
+  pointer-events: none;
+}
+
+.statusPending {
+  background-color: #fef3c7;
+  color: #d97706;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  width: fit-content;
+}
+
+.statusCompleted {
+  background-color: #d1fae5;
+  color: #059669;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  width: fit-content;
+}
+
+.statusApproved {
+  background-color: #3b82f6; /* Blue */
+  color: #1e40af;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  width: fit-content;
+  color: whitesmoke;
+}
+.completed-btn {
+  background-color: #71ad73; /* Light gray background */
+  color: #e6e6e6; /* Dark gray text */
+  border: none;
+  cursor: not-allowed;
+  font-weight: bold;
+  padding: 8px 12px;
+  pointer-events: none;
+}
+/* .cancelled-btn {
+  background-color: #ddd; 
+  color: #777; 
+  border: none;
+  cursor: not-allowed;
+  font-weight: bold;
+  padding: 8px 12px;
+} */

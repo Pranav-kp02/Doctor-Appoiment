@@ -1,0 +1,93 @@
+.signBtn {
+  background-color: transparent;
+  font-weight: 700;
+  border-radius: 50rem;
+  color: #283779;
+  border-color: #283779;
+  padding: 0.775rem 1.5rem;
+  font-size: 0.875rem;
+}
+
+.profileImg {
+  background-color: transparent;
+  width: 30px;
+}
+
+.btnsize {
+  height: 100px;
+}
+.dropdown {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.drop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-top: 4rem;
+  font-size: medium;
+  color: rgb(110, 103, 103);
+  z-index: 20;
+  display: none;
+}
+.dropdown:hover {
+  .drop {
+    display: block;
+  }
+}
+.drop-list {
+  min-width: 11rem;
+  background-color: rgb(245 245 244 / var(--tw-bg-opacity, 1));
+  border-radius: 0.25rem;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.lists-drop-down:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.signBtn:hover {
+  background-color: #283779;
+}
+
+.navBar {
+  background-image: none;
+  transition: none;
+  backdrop-filter: blur(4px);
+  background-color: rgba(249, 250, 253, 0.14);
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  margin-bottom: 7rem;
+}
+
+.listStyle {
+  color: #283779;
+  font-size: 1.1rem;
+  width: 110px;
+  text-align: center;
+  padding: 0rem 1rem !important;
+  font-family: "Fjalla One", serif;
+}
+
+.listStyle:hover {
+  font-weight: bold;
+  color: #283779;
+}
+.nav-align {
+  align-items: center;
+}
+
+/* .hover-hanburger {
+  display: none;
+} */
+.hover-hanburger:hover {
+  display: block;
+}

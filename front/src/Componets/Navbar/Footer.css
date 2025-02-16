@@ -1,0 +1,33 @@
+.bg-footer {
+  background-image: url("https://technext.github.io/live-doc/v1.0.0/assets/img/gallery/dot-bg.png");
+  background-position: top left;
+  margin-top: -3.125rem;
+  min-height: 100%;
+  width: 135px;
+  position: absolute;
+  background-repeat: no-repeat;
+}
+
+.main {
+  max-width: 1140px;
+  position: relative;
+}
+
+.header-text-sty {
+  font-family: "Fjalla One", serif;
+}
+
+.footer-link {
+  cursor: pointer;
+  color: #b2dded;
+}
+
+.footer-link:hover {
+  color: whitesmoke;
+}
+
+.bg-primary {
+  background-color: #283779 !important;
+  color: white;
+  font-size: small;
+}
