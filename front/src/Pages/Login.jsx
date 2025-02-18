@@ -5,12 +5,14 @@ import LoginForm from "../Componets/LoginOrReg/LoginForm";
 import { useDispatch, useSelector } from "react-redux";
 import { changeLogReg } from "../REDUX/userAuthenticationSlice";
 import { useNavigate } from "react-router-dom";
+import EmailOtpVerfication from "../Componets/LoginOrReg/EmailOtpVerfication";
 
 const Login = () => {
   const navigator = useNavigate();
   const loginRegister = useSelector(
     (state) => state.userAth.loginRegPage ?? "Login"
   );
+
   const dispatch = useDispatch();
 
   return (
@@ -21,8 +23,9 @@ const Login = () => {
           <div>{loginRegister === "Sign Up" ? "Create Account" : "Login"}</div>
         </div>
 
-        {loginRegister === "Sign Up" ? <Register /> : <LoginForm />}
-
+        {loginRegister === "Sign Up" && <EmailOtpVerfication />}
+        {loginRegister === "Login" && <LoginForm />}
+        {loginRegister === "OTPapprove" && <Register />}
         <br />
         {loginRegister === "Sign Up" ? (
           <p className="text-center registerPage">

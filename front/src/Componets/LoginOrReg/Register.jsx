@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { API } from "../../AXIOS";
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeLogReg } from "../../REDUX/userAuthenticationSlice";
 import styles from "./Register.module.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -23,6 +23,7 @@ const Register = () => {
     password: yup.string().required("enter password"),
   });
 
+  const uEmail = useSelector((state) => state.otpVerfication.uEmail ?? "");
   const handleForm = async (data) => {
     try {
       const res = await API.post(
@@ -55,7 +56,7 @@ const Register = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, []);
   return (
     <Container>
       <Row>
@@ -66,7 +67,7 @@ const Register = () => {
               onSubmit={handleForm}
               initialValues={{
                 fullName: "",
-                email: "",
+                email: uEmail,
                 password: "",
               }}
             >

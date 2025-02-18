@@ -28,6 +28,7 @@ import UserDetailsPage from "./AdminDash/Componets/UserDetailsPage";
 import DocPatiens from "./DoctorDash/DocComponets/DocPatiens";
 import ReviewList from "./AdminDash/Componets/ReviewList";
 import Loader from "./Componets/Loader";
+import EmailOtpVerfication from "./Componets/LoginOrReg/EmailOtpVerfication";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
           <Route path="/userAppoiments" element={<MyAppoiment />} />
           <Route path="/reg" element={<Register />} />
           <Route path="/log" element={<LoginForm />} />
+          <Route path="/email-verfiey" element={<EmailOtpVerfication />} />
           {/* admin route */}
           <Route path="/admin" element={<AdminApp />}>
             <Route path="dashboard" element={<AdminDashboad />} />

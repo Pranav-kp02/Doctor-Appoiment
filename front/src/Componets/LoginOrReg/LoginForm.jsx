@@ -60,7 +60,7 @@ function LoginForm() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, []);
   return (
     <Container fluid className={styles.registrationContainer}>
       <Row className={styles.formRow}>

@@ -52,7 +52,7 @@ const MyProfile = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, []);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="profile-main container">

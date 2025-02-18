@@ -9,7 +9,7 @@ import Review from "../Componets/Home/Review";
 const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, []);
   return (
     <>
       <Carsol />

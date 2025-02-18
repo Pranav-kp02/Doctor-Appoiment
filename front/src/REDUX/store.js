@@ -5,6 +5,7 @@ import userAuthentication from "./userAuthenticationSlice";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import docAthetication from "./docAthetication";
+import otpVerfication from "./otpVerfiction";
 
 const persistConfig = {
   key: "root",
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   userAth: userAuthentication,
   doctors: doctorsSlice,
   Admin: adminSlice,
+  otpVerfication: otpVerfication,
 });
 
 // Configure middleware to handle serialization warnings

@@ -9,10 +9,15 @@ const {
   userAllAppoiment,
   userLogOut,
   reviewByUser,
+  userEmail,
+  verifyOtp,
 } = require("../controller/userControl");
 const { authentication } = require("../middleWare/auth");
 const { veiwAllDoctors } = require("../controller/doctorCntrol");
 const userRouter = express.Router();
+
+userRouter.route("/emailcheck").post(userEmail);
+userRouter.route("/otp").post(verifyOtp);
 
 userRouter.route("/reg").post(userRegister);
 userRouter.route("/log").post(userLogin);

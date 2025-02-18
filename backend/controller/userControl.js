@@ -4,6 +4,107 @@ const { genToken } = require("../utils/genToken");
 const Doctor = require("../modules/doctorShema");
 const APPOIMENT = require("../modules/appoimentSchema");
 const Review = require("../modules/review");
+const sendVerificationEmail = require("../configDB/mailer");
+
+const OTP_EXPIRY_TIME = 10 * 60 * 1000;
+
+exports.userEmail = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    let user = await User.findOne({ email });
+
+    const otp = Math.floor(100000 + Math.random() * 900000).toString(); // 6-digit OTP
+    const otpExpires = Date.now() + OTP_EXPIRY_TIME; // Set expiry
+
+    if (user) {
+      if (user.verified) {
+        return res.status(400).json({
+          success: false,
+          message: "Email already registered and verified.",
+        });
+      }
+
+      // 🟢 Resend OTP for unverified users
+      user.otp = otp;
+      user.otpExpires = otpExpires;
+      await user.save();
+
+      sendVerificationEmail(user.email, otp);
+
+      return res.json({
+        success: true,
+        message: "New OTP sent. Please check your inbox.",
+      });
+    }
+
+    // 🆕 Register new user with OTP
+    user = await User.create({
+      email,
+      otp,
+      otpExpires,
+      verified: false,
+    });
+    await user.save();
+
+    sendVerificationEmail(email, otp);
+
+    res.json({ success: true, message: "OTP sent. Please check your inbox." });
+  } catch (error) {
+    console.error("Error sending OTP:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+exports.verifyOtp = async (req, res) => {
+  const { email, otp } = req.body;
+
+  if (!email || !otp) {
+    return res
+      .status(400)
+      .json({ success: false, message: "enter email and otp" });
+  }
+
+  try {
+    let user = await User.findOne({ email });
+
+    if (!user) {
+      return res
+        .status(400)
+        .json({ success: false, message: "User not found" });
+    }
+
+    // ❌ Check if OTP has expired
+    if (Date.now() > user.otpExpires) {
+      return res.status(400).json({
+        success: false,
+        message: "OTP has expired. Please request a new one.",
+      });
+    }
+
+    // ✅ Check if OTP matches
+    if (user.otp !== otp) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid OTP. Please try again." });
+    }
+
+    // ✅ Mark user as verified
+    user.verified = true;
+    user.otp = undefined; // Remove OTP after successful verification
+    user.otpExpires = undefined;
+    await user.save();
+
+    res.json({
+      success: true,
+      message: "Email verified successfully!",
+      user: user.email,
+    });
+  } catch (error) {
+    console.error("Error verifying OTP:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
 
 exports.userRegister = async (req, res) => {
   const { fullName, email, password, age, gender, dob, phone } = req.body;
@@ -15,25 +116,36 @@ exports.userRegister = async (req, res) => {
     });
   }
   const isEmail = await User.findOne({ email });
-  if (isEmail) {
+  if (!isEmail) {
     return res.status(400).json({
       sucess: false,
-      message: "Email already used",
+      message: "email not found",
+    });
+  }
+
+  if (!isEmail.verified) {
+    return res.status(400).json({
+      sucess: false,
+      message: "Email is not verified ",
     });
   }
 
   const hassPass = await bcrypt.hash(password, 10);
 
   try {
-    const user = await User.create({
-      fullName,
-      email,
-      password: hassPass,
-      age,
-      gender,
-      dob,
-      phone,
-    });
+    const user = await User.findByIdAndUpdate(
+      isEmail._id,
+      {
+        fullName,
+        email,
+        password: hassPass,
+        age,
+        gender,
+        dob,
+        phone,
+      },
+      { new: true }
+    );
 
     res.status(201).json({
       success: true,
