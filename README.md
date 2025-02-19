@@ -41,7 +41,7 @@ Ensure you have the following installed:
    npm install
    ```
 4. Configure environment variables:
-   - Create a `.env` file in the root directory.
+   - Create a `dot.env` file in the root directory.
    - Add the following variables:
      ```env
      PORT=3000
