@@ -1,7 +1,7 @@
 # Doctor Appointment App
 
 ## Introduction
-The **Doctor Appointment App** is a web-based platform that allows patients to book, manage, and track their medical appointments efficiently. The application provides a seamless experience for both patients and healthcare providers by integrating appointment scheduling, SMS reminders, and image uploads for medical records.
+The **Doctor Appointment App** is a web-based platform that allows patients to book, manage, and track their medical appointments efficiently. The application provides a seamless experience for both patients and healthcare providers by integrating appointment scheduling, Email reminders, and image uploads for medical records.
 
 ## Features
 - **User Authentication**: Secure login and registration for patients and doctors.
@@ -17,9 +17,9 @@ The **Doctor Appointment App** is a web-based platform that allows patients to b
 - **Backend**: Node.js with Express.js
 - **Database**: MongoDB / PostgreSQL
 - **Authentication**: JWT-based authentication
-- **SMS Integration**: Twilio API
+- **Email Integration**: Nodemailer
 - **Image Storage**: Cloudinary
-- **Deployment**: AWS / Vercel / Heroku (as per choice)
+- **Deployment**: AWS / Vercel 
 
 ## Installation & Setup
 ### Prerequisites
@@ -30,11 +30,11 @@ Ensure you have the following installed:
 ### Steps to Run the Project
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/doctor-appointment-app.git
+   https://github.com/Pranav-kp02/Doctor-Appoiment.git
    ```
 2. Navigate to the project directory:
    ```sh
-   cd doctor-appointment-app
+   cd Doctor-Appoiment
    ```
 3. Install dependencies:
    ```sh
@@ -47,7 +47,8 @@ Ensure you have the following installed:
      PORT=5000
      MONGO_URI=your-mongodb-uri
      JWT_SECRET=your-secret-key
-     TWILIO_ACCOUNT_SID=your-twilio-sid
+     EMAIL_USER= email
+     EMAIL_PASS= app password
      TWILIO_AUTH_TOKEN=your-twilio-auth-token
      CLOUDINARY_CLOUD_NAME=your-cloudinary-name
      CLOUDINARY_API_KEY=your-cloudinary-api-key
@@ -57,7 +58,7 @@ Ensure you have the following installed:
    ```sh
    npm start
    ```
-6. Open the application in the browser at `http://localhost:5000`
+6. Open the application in the browser at `http://localhost:3000`
 
 ## API Endpoints
 ### Authentication
@@ -67,29 +68,14 @@ Ensure you have the following installed:
 ### Appointments
 - `POST /api/appointments` - Book an appointment
 - `GET /api/appointments` - Get user appointments
-- `DELETE /api/appointments/:id` - Cancel appointment
+- `POST /api/appointments/:id` - Cancel appointment
 
 ### Doctors
 - `GET /api/doctors` - Get list of doctors
 - `GET /api/doctors/:id` - Get doctor details
 
-## Contributing
-Contributions are welcome! Follow these steps:
-1. Fork the repository.
-2. Create a new branch:
-   ```sh
-   git checkout -b feature-name
-   ```
-3. Commit changes and push to the branch:
-   ```sh
-   git commit -m "Added new feature"
-   git push origin feature-name
-   ```
-4. Create a Pull Request.
 
-## License
-This project is licensed under the MIT License. See `LICENSE` for details.
 
 ## Contact
-For any inquiries, contact: `your-email@example.com`
+For any inquiries, contact: `pranavkp1320@gmail.com`
 
