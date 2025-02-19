@@ -59,22 +59,6 @@ Ensure you have the following installed:
    ```
 6. Open the application in the browser at `http://localhost:3000`
 
-## API Endpoints
-### Authentication
-- `POST /api/auth/register` - Register a new user
-- `POST /api/auth/login` - Login user
-
-### Appointments
-- `POST /api/appointments` - Book an appointment
-- `GET /api/appointments` - Get user appointments
-- `POST /api/appointments/:id` - Cancel appointment
-
-### Doctors
-- `GET /api/doctors` - Get list of doctors
-- `GET /api/doctors/:id` - Get doctor details
-
-
-
 ## Contact
 For any inquiries, contact: `pranavkp1320@gmail.com`
 
