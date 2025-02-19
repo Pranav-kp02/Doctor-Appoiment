@@ -4,7 +4,7 @@ const { genToken } = require("../utils/genToken");
 const Doctor = require("../modules/doctorShema");
 const APPOIMENT = require("../modules/appoimentSchema");
 const Review = require("../modules/review");
-const sendVerificationEmail = require("../configDB/mailer");
+const sendVerificationEmail = require("../mails/emailVerfication");
 
 const OTP_EXPIRY_TIME = 10 * 60 * 1000;
 

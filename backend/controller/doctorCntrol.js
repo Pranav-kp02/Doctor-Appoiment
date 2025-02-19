@@ -3,6 +3,8 @@ const bcrypt = require("bcrypt");
 const { genToken } = require("../utils/genToken");
 const APPOIMENT = require("../modules/appoimentSchema");
 const User = require("../modules/userSchema");
+const { scheduleAppointmentReminder } = require("../mails/sendReminderMails");
+const { sendApprovalEmail } = require("../mails/approveMail");
 
 exports.docRegister = async (req, res) => {
   const {
@@ -587,6 +589,12 @@ exports.approvedAppoiment = async (req, res) => {
   }
 
   appoiment.status = approve;
+  await appoiment.save();
+
+  if (approve === "approve") {
+    scheduleAppointmentReminder(appoiment);
+    sendApprovalEmail(appoiment.userData.email, appoiment);
+  }
 
   await appoiment.save();
   return res.status(200).json({

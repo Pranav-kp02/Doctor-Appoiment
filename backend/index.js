@@ -6,7 +6,6 @@ const cookie = require("cookie-parser");
 const docRouter = require("./routes/doctorRoute");
 const adminRoute = require("./routes/adminRoute");
 const cors = require("cors");
-// const cloudinary = require("./configDB/cloudinary");
 
 dotenv.config({ path: `./dot.env` });
 
@@ -28,7 +27,6 @@ app.use(docRouter);
 app.use(adminRoute);
 
 connectDataBase();
-// cloudinary();
 
 const PORT = process.env.PORT;
 
