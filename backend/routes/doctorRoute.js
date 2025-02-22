@@ -18,15 +18,28 @@ const { authentication } = require("../middleWare/auth");
 const { bookAppoiment } = require("../controller/userControl");
 const { upload } = require("../configDB/cloudinary");
 const docRouter = express.Router();
+const rateLimit = require("express-rate-limit");
 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 3, // Limit each IP to 100 requests per `window` (15 min)
+  message: "Too many requests, please try again later.",
+  headers: false, // Send RateLimit headers in the response
+});
+
+// register/login
 docRouter.route("/docReg").post(upload.single("image"), docRegister);
 docRouter.route("/docLog").post(docLogin);
+
+// doc profile and user booking appoiment
 docRouter.route("/docProfDetail").get(authentication, docProfile);
 docRouter
   .route("/docProf/:docId")
   .put(authentication, docUpdate)
   .delete(authentication, docDelete)
-  .post(authentication, bookAppoiment); //user booking appoiment
+  .post(authentication, limiter, bookAppoiment); //user booking appoiment
+
+// doc side contollers
 docRouter.route("/docAppoiment").get(authentication, docPendingAppoiment);
 docRouter
   .route("/docPendingAppoiment/:appId")

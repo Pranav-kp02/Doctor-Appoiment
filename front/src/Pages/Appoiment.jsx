@@ -1,93 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import "./Appoiment.css";
-import RelatedDoctor from "../Componets/Appoiment/RelatedDoctor";
 import { useDispatch, useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import {
   doctorsDetails,
-  getAppoimentIndex,
   getAppoimentSlot,
-  getAppoimentTime,
   getRelatedDoc,
 } from "../REDUX/doctorsSlice";
 import DoctorInfo from "../Componets/Appoiment/DoctorInfo";
-import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
+import RelatedDoctor from "../Componets/Appoiment/RelatedDoctor";
 import { API } from "../AXIOS";
+import "./Appoiment.css";
 
-const Appoiment = () => {
+const Appointment = () => {
   const { docId } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const docAppoimentSlot = useSelector((state) => state.doctors.appoimentSlots);
-  const docAppoimentIndex = useSelector((state) => state.doctors.slotIndex);
-  const docAppoimentTime = useSelector((state) => state.doctors.slotTime);
+  const [time, setTime] = useState(null);
+  const [dateIndex, setDateIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const docAppointmentSlot = useSelector(
+    (state) => state.doctors.appoimentSlots
+  );
   const authentication = useSelector(
     (state) => state.userAth.athetication ?? false
   );
 
-  const daysInWeek = ["SUN", "MON", "TUE", "WED", "THUS", "FRI", "SAT"];
-
-  useEffect(() => {
-    dispatch(doctorsDetails(docId));
-    dispatch(getRelatedDoc(docId));
-    const getAvailableSlot = async () => {
-      let today = new Date();
-      today.setSeconds(0, 0);
-      const slots = [];
-
-      for (let i = 0; i < 7; i++) {
-        let currentDate = new Date(today);
-        currentDate.setDate(today.getDate() + i);
-
-        let endTime = new Date(currentDate);
-        endTime.setHours(21, 0, 0, 0);
-
-        if (i === 0) {
-          let now = new Date();
-          currentDate.setHours(
-            now.getHours() >= 10 ? now.getHours() + 1 : 10,
-            now.getMinutes() >= 30 ? 30 : 0
-          );
-        } else {
-          currentDate.setHours(10, 0, 0, 0); // 10:00 AM
-        }
-
-        let timeSlot = [];
-        while (currentDate < endTime) {
-          let formattedTime = currentDate.toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: true,
-          });
-
-          let formattedDate = currentDate.toLocaleDateString("en-GB", {
-            weekday: "short",
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          });
-
-          timeSlot.push({
-            dateTime: formattedDate,
-            time: formattedTime,
-
-            dayOfWeek: currentDate.getDay(),
-            dayOfMonth: currentDate.getDate(),
-          });
-
-          currentDate.setMinutes(currentDate.getMinutes() + 30);
-        }
-
-        slots.push(timeSlot);
-      }
-
-      dispatch(getAppoimentSlot(slots));
-    };
-
-    getAvailableSlot();
-  }, [dispatch, docId]);
+  const daysInWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
   const { handleSubmit, setValue } = useForm({
     defaultValues: {
@@ -96,109 +38,191 @@ const Appoiment = () => {
     },
   });
 
+  useEffect(() => {
+    const getAvailableSlot = async () => {
+      setIsLoading(true);
+      try {
+        let today = new Date();
+        today.setSeconds(0, 0);
+        const slots = [];
+
+        for (let i = 0; i < 7; i++) {
+          let currentDate = new Date(today);
+          currentDate.setDate(today.getDate() + i);
+
+          let endTime = new Date(currentDate);
+          endTime.setHours(21, 0, 0, 0);
+
+          if (i === 0) {
+            let now = new Date();
+            currentDate.setHours(
+              now.getHours() >= 10 ? now.getHours() + 1 : 10,
+              now.getMinutes() >= 30 ? 30 : 0
+            );
+          } else {
+            currentDate.setHours(10, 0, 0, 0); // 10:00 AM
+          }
+
+          let timeSlot = [];
+          while (currentDate < endTime) {
+            let formattedTime = currentDate.toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+              hour12: true,
+            });
+
+            let formattedDate = currentDate.toLocaleDateString("en-GB", {
+              weekday: "short",
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            });
+
+            timeSlot.push({
+              dateTime: formattedDate,
+              time: formattedTime,
+              dayOfWeek: currentDate.getDay(),
+              dayOfMonth: currentDate.getDate(),
+            });
+
+            currentDate.setMinutes(currentDate.getMinutes() + 30);
+          }
+
+          slots.push(timeSlot);
+        }
+
+        dispatch(getAppoimentSlot(slots));
+
+        // Set initial values when slots are available
+        if (slots.length > 0 && slots[0].length > 0) {
+          setValue("date", slots[0][0].dateTime);
+          setDateIndex(0);
+        }
+      } catch (error) {
+        console.error("Error loading slots:", error);
+        toast.error("Failed to load appointment slots");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    dispatch(doctorsDetails(docId));
+    dispatch(getRelatedDoc(docId));
+    getAvailableSlot();
+  }, [dispatch, docId, setValue]);
+
   const onSubmit = async (data) => {
     if (!authentication) {
-      toast.error("Please Login");
+      toast.error("Please login to book an appointment");
       return;
     }
+
     if (!data.time || !data.date) {
       toast.error("Please select both date and time");
       return;
     }
-    const submissionData = {
-      ...data,
-    };
 
     try {
-      const res = await API.post(`/docProf/${docId}`, submissionData, {
+      const res = await API.post(`/docProf/${docId}`, data, {
         withCredentials: true,
       });
 
       if (res.data.success) {
-        navigate("/userAppoiments");
         toast.success(res.data.message);
+        navigate("/userAppoiments");
       } else {
         toast.error(res.data.message);
       }
     } catch (error) {
       const errorMessage =
-        error.response?.data?.message ||
-        error.message ||
-        "Something went wrong";
+        error.response?.data || error.message || "Failed to book appointment";
       toast.error(errorMessage);
-      console.log(errorMessage);
+      console.error("Appointment booking error:", error);
     }
-
-    dispatch(getAppoimentTime(data.time));
   };
 
+  if (isLoading) {
+    return (
+      <div className="loading-container">
+        <p>Loading appointment slots...</p>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      {/* --------doc info----------- */}
+    <div className="appointment-container">
       <DoctorInfo />
 
-      {/* slot booking */}
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          {/* Appointment Slot Selection */}
-          <div className="slot-main-appoi">
-            <p>Booking slot</p>
+      <form onSubmit={handleSubmit(onSubmit)} className="appointment-form">
+        <div className="slot-main-appoi">
+          <h2 className="booking-title">Select Appointment Slot</h2>
 
-            {/* Day Slot Selection */}
-            <div className="day-slot-appoi">
-              {docAppoimentSlot.length > 0 &&
-                docAppoimentSlot.map((ele, index) => (
-                  <div
-                    key={index}
-                    onClick={() => {
-                      dispatch(getAppoimentIndex(index));
-                      setValue("date", ele[0].dateTime);
-                    }}
-                    className={`week-slot-appoi ${
-                      docAppoimentIndex === index
-                        ? "selected-week"
-                        : "not-selcted-week"
-                    }`}
-                  >
-                    <p>{ele[0] && daysInWeek[ele[0].dayOfWeek]}</p>
-                    <p>{ele[0] && ele[0].dayOfMonth}</p>
-                  </div>
-                ))}
-            </div>
-
-            {/* Time Slot Selection */}
-            <div className="time-slot-main-appoi container">
-              {docAppoimentSlot.length &&
-                docAppoimentSlot[docAppoimentIndex].map((items, index) => (
-                  <p
-                    key={index}
-                    onClick={() => {
-                      dispatch(getAppoimentTime(items.time));
-                      setValue("time", items.time);
-                    }}
-                    className={`time-slot-appoi ${
-                      items.time === docAppoimentTime
-                        ? "selected-times"
-                        : "not-selected-times"
-                    }`}
-                  >
-                    {items.time}
-                  </p>
-                ))}
-            </div>
-
-            {/* Submit Button */}
-            <button type="submit" className="booking-btn">
-              Book An Appointment
-            </button>
+          {/* Day Slot Selection */}
+          <div className="day-slot-appoi">
+            {docAppointmentSlot.length > 0 &&
+              docAppointmentSlot.map((ele, index) => (
+                <div
+                  key={index}
+                  onClick={() => {
+                    setDateIndex(index);
+                    setValue("date", ele[0].dateTime);
+                    setTime(null); // Reset time when date changes
+                    setValue("time", null);
+                  }}
+                  className={`week-slot-appoi ${
+                    dateIndex === index ? "selected-week" : "not-selected-week"
+                  }`}
+                >
+                  <p>{ele[0] && daysInWeek[ele[0].dayOfWeek]}</p>
+                  <p>{ele[0] && ele[0].dayOfMonth}</p>
+                </div>
+              ))}
           </div>
+
+          {/* Time Slot Selection */}
+          <div className="time-slot-main-appoi">
+            {docAppointmentSlot.length > 0 &&
+              docAppointmentSlot[dateIndex].map((items, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  onClick={() => {
+                    setTime(items.time);
+                    setValue("time", items.time);
+                  }}
+                  className={`time-slot-appoi ${
+                    items.time === time
+                      ? "selected-times"
+                      : "not-selected-times"
+                  }`}
+                >
+                  {items.time}
+                </button>
+              ))}
+          </div>
+
+          {/* Selected Slot Summary */}
+          <div className="selected-slot-summary">
+            {time && docAppointmentSlot[dateIndex][0]?.dateTime && (
+              <p>
+                Selected : {docAppointmentSlot[dateIndex][0].dateTime} at {time}
+              </p>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            className="booking-btn"
+            disabled={!time || !docAppointmentSlot[dateIndex][0]?.dateTime}
+          >
+            Book Appointment
+          </button>
         </div>
       </form>
 
-      {/* -------realted doc---------- */}
       <RelatedDoctor />
     </div>
   );
 };
 
-export default Appoiment;
+export default Appointment;
