@@ -103,3 +103,27 @@
   transform: translateY(-3px);
   box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
 }
+
+.googleBtn {
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  padding: 10px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  max-width: 220px;
+  margin-top: 10px;
+}
+
+.googlIcon {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  background-color: white;
+  border-radius: 2px;
+  padding: 1px;
+}

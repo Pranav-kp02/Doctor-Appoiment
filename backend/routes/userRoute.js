@@ -14,6 +14,7 @@ const {
 } = require("../controller/userControl");
 const { authentication } = require("../middleWare/auth");
 const { veiwAllDoctors } = require("../controller/doctorCntrol");
+const { googleAuth } = require("../controller/googleAuth");
 const userRouter = express.Router();
 
 // email verfication
@@ -23,6 +24,7 @@ userRouter.route("/otp").post(verifyOtp);
 // login/register
 userRouter.route("/reg").post(userRegister);
 userRouter.route("/log").post(userLogin);
+userRouter.route("/google").get(googleAuth);
 
 // user profile
 userRouter.route("/userProfile").get(authentication, userProfile);
@@ -33,7 +35,7 @@ userRouter
   .delete(authentication, userDelete);
 
 // log out
-userRouter.route("/logOut").post(authentication, userLogOut);
+userRouter.route("/logOut").post(userLogOut);
 
 // all doctors list not authenticated
 userRouter.route("/userAllDoctors").get(veiwAllDoctors);

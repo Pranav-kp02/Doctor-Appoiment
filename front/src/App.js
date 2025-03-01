@@ -29,53 +29,59 @@ import DocPatiens from "./DoctorDash/DocComponets/DocPatiens";
 import ReviewList from "./AdminDash/Componets/ReviewList";
 import Loader from "./Componets/Loader";
 import EmailOtpVerfication from "./Componets/LoginOrReg/EmailOtpVerfication";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
   return (
     <>
-      <Router>
-        <Header />
-        <Loader />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/doctors" element={<Doctors />} />
-          <Route path="/doctors/:specialty" element={<Doctors />} />
-          <Route path="/appoiment/:docId" element={<Appoiment />} />
-          <Route path="/contactUs" element={<Contact />} />
-          <Route path="/userProfile" element={<MyProfile />} />
-          <Route path="/userAppoiments" element={<MyAppoiment />} />
-          <Route path="/reg" element={<Register />} />
-          <Route path="/log" element={<LoginForm />} />
-          <Route path="/email-verfiey" element={<EmailOtpVerfication />} />
-          {/* admin route */}
-          <Route path="/admin" element={<AdminApp />}>
-            <Route path="dashboard" element={<AdminDashboad />} />
-            <Route path="all-appoiment" element={<AllAppoimnets />} />
-            <Route path="add-doctors" element={<AddDoctors />} />
-            <Route path="doctors-list" element={<DoctorsList />} />
-            <Route path="user-list" element={<UserList />} />
-            <Route path="review-list" element={<ReviewList />} />
-            <Route path="/admin/user-list/:uid" element={<UserDetailsPage />} />
-          </Route>
-          {/* doctor Apply */}
-          <Route path="/doctor-Apply" element={<DoctorApply />} />
-          <Route path="/docLogin" element={<DoctorLogin />} />
-          {/* doctor dashBoard */}
-          <Route path="/doctor" element={<DoctorApp />}>
-            <Route path="dashboard" element={<DoctorDashboad />} />
-            <Route path="doc-appoiment" element={<DoctorAllAppoimnets />} />
-            <Route path="doc-patiens" element={<DocPatiens />} />
-            <Route
-              path="doc-appoiment/:status"
-              element={<DoctorAllAppoimnets />}
-            />
-            <Route path="doctors-profile" element={<DoctorProfile />} />
-          </Route>
-        </Routes>
-        <Footer />
-      </Router>
+      <GoogleOAuthProvider clientId="665747359516-ivq9i0ti0r5fvng2bjl31ocktlmhldcr.apps.googleusercontent.com">
+        <Router>
+          <Header />
+          <Loader />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/doctors" element={<Doctors />} />
+            <Route path="/doctors/:specialty" element={<Doctors />} />
+            <Route path="/appoiment/:docId" element={<Appoiment />} />
+            <Route path="/contactUs" element={<Contact />} />
+            <Route path="/userProfile" element={<MyProfile />} />
+            <Route path="/userAppoiments" element={<MyAppoiment />} />
+            <Route path="/reg" element={<Register />} />
+            <Route path="/log" element={<LoginForm />} />
+            <Route path="/email-verfiey" element={<EmailOtpVerfication />} />
+            {/* admin route */}
+            <Route path="/admin" element={<AdminApp />}>
+              <Route path="dashboard" element={<AdminDashboad />} />
+              <Route path="all-appoiment" element={<AllAppoimnets />} />
+              <Route path="add-doctors" element={<AddDoctors />} />
+              <Route path="doctors-list" element={<DoctorsList />} />
+              <Route path="user-list" element={<UserList />} />
+              <Route path="review-list" element={<ReviewList />} />
+              <Route
+                path="/admin/user-list/:uid"
+                element={<UserDetailsPage />}
+              />
+            </Route>
+            {/* doctor Apply */}
+            <Route path="/doctor-Apply" element={<DoctorApply />} />
+            <Route path="/docLogin" element={<DoctorLogin />} />
+            {/* doctor dashBoard */}
+            <Route path="/doctor" element={<DoctorApp />}>
+              <Route path="dashboard" element={<DoctorDashboad />} />
+              <Route path="doc-appoiment" element={<DoctorAllAppoimnets />} />
+              <Route path="doc-patiens" element={<DocPatiens />} />
+              <Route
+                path="doc-appoiment/:status"
+                element={<DoctorAllAppoimnets />}
+              />
+              <Route path="doctors-profile" element={<DoctorProfile />} />
+            </Route>
+          </Routes>
+          <Footer />
+        </Router>
+      </GoogleOAuthProvider>
     </>
   );
 }

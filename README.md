@@ -13,6 +13,7 @@ The **Doctor Appointment App** is a web-based platform that allows patients to b
 - **Image Uploads**: Upload using Cloudinary.
 - **Admin Dashboard**: Manage users, doctors, and appointments.
 - **Responsive UI**: Mobile-friendly design for easy access on any device.
+- **Google OAth 2.0**: User can login or signUp using google.
 
 ## Technologies Used
 
@@ -22,6 +23,7 @@ The **Doctor Appointment App** is a web-based platform that allows patients to b
 - **Authentication**: JWT-based authentication
 - **Email Integration**: Nodemailer, Node-corn
 - **Image Storage**: Cloudinary
+- **Google Oath2**: googleapis,@react-oauth/google
 - **Deployment**: pending..
 
 ## Installation & Setup

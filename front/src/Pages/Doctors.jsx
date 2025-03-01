@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./DoctorsList.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -14,10 +14,11 @@ const Doctors = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   let { specialty } = useParams();
-
+  const [activeFilter, setActiveFilter] = useState("");
   const doctors = useSelector((state) => state.doctors.filteredDoctor ?? []);
 
   const handleFilter = (specialty) => {
+    setActiveFilter(specialty);
     if (specialty) {
       dispatch(filterDoctorsBySpecialty(specialty));
     } else {
@@ -26,11 +27,13 @@ const Doctors = () => {
   };
 
   useEffect(() => {
+    setActiveFilter(specialty || "");
     if (specialty) {
       dispatch(filterDoctorsBySpecialty(specialty));
     } else {
       dispatch(clearFilter());
     }
+
     const getAlldoctorDetails = async () => {
       try {
         const res = await API.get("/userAllDoctors", {
@@ -57,38 +60,68 @@ const Doctors = () => {
     };
 
     getAlldoctorDetails();
-
     window.scrollTo(0, 0);
   }, [specialty, dispatch]);
 
   return (
     <div className="doctor-main">
       <div className="doc-side-bar">
-        <p className="doc-side-para" onClick={() => handleFilter("")}>
+        <div
+          className={`doc-side-para ${!activeFilter ? "active-filter" : ""}`}
+          onClick={() => handleFilter("")}
+        >
           All doctors
-        </p>
-        <p className="doc-side-para" onClick={() => handleFilter("Neurology")}>
+        </div>
+        <div
+          className={`doc-side-para ${
+            activeFilter === "Neurology" ? "active-filter" : ""
+          }`}
+          onClick={() => handleFilter("Neurology")}
+        >
           Neurology
-        </p>
-        <p className="doc-side-para" onClick={() => handleFilter("Eye-care")}>
+        </div>
+        <div
+          className={`doc-side-para ${
+            activeFilter === "Eye-care" ? "active-filter" : ""
+          }`}
+          onClick={() => handleFilter("Eye-care")}
+        >
           Eye-care
-        </p>
-        <p
-          className="doc-side-para"
+        </div>
+        <div
+          className={`doc-side-para ${
+            activeFilter === "Osteoporosis" ? "active-filter" : ""
+          }`}
           onClick={() => handleFilter("Osteoporosis")}
         >
           Osteoporosis
-        </p>
-        <p className="doc-side-para" onClick={() => handleFilter("Heart")}>
+        </div>
+        <div
+          className={`doc-side-para ${
+            activeFilter === "Heart" ? "active-filter" : ""
+          }`}
+          onClick={() => handleFilter("Heart")}
+        >
           Heart
-        </p>
-        <p className="doc-side-para" onClick={() => handleFilter("Cardiac")}>
+        </div>
+        <div
+          className={`doc-side-para ${
+            activeFilter === "Cardiac" ? "active-filter" : ""
+          }`}
+          onClick={() => handleFilter("Cardiac")}
+        >
           Cardiac
-        </p>
-        <p className="doc-side-para" onClick={() => handleFilter("ENT")}>
+        </div>
+        <div
+          className={`doc-side-para ${
+            activeFilter === "ENT" ? "active-filter" : ""
+          }`}
+          onClick={() => handleFilter("ENT")}
+        >
           ENT
-        </p>
+        </div>
       </div>
+
       <div className="doctor-list">
         {doctors.map((item) => (
           <div
@@ -96,13 +129,21 @@ const Doctors = () => {
             className="doctors-card"
             onClick={() => navigate(`/appoiment/${item._id}`)}
           >
-            <img className="doc-img-color" src={item.image} alt="" />
+            <img
+              className="doc-img-color"
+              src={item.image}
+              alt={`Dr. ${item.fullName}`}
+              onError={(e) => {
+                e.target.src =
+                  "https://via.placeholder.com/300x200?text=Doctor";
+              }}
+            />
             <div className="p-4">
               <div className="doc-avlb">
-                <p className="doc-avlb-sybol"></p>
+                <div className="doc-avlb-sybol"></div>
                 <p>Available</p>
               </div>
-              <p className="doc-text-name">{item.fullName}</p>
+              <p className="doc-text-name">Dr. {item.fullName}</p>
               <p className="doc-specality">{item.speciality}</p>
             </div>
           </div>

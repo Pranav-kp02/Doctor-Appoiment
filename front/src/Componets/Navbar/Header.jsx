@@ -14,6 +14,7 @@ const Header = () => {
   const athetication = useSelector(
     (state) => state.userAth.athetication ?? false
   );
+
   const docAthetication = useSelector(
     (state) => state.DoctorAth.athetication ?? false
   );

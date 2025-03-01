@@ -355,7 +355,7 @@ exports.userDelete = async (req, res) => {
   });
 };
 
-exports.bookAppoiment = async (req, res) => {
+exports.bookAppoiment = async (req, res, next) => {
   const { docId } = req.params;
   const uId = req.id;
   const { time, date } = req.body;

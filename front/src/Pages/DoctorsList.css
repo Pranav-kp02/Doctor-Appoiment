@@ -4,32 +4,37 @@
   gap: 2.25rem;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 2rem;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-x: hidden;
+  background-color: #f9fafb;
 }
 
 @media (min-width: 640px) {
   .doctor-main {
-    flex-direction: row; /* Side-by-side layout on larger screens */
-    gap: 1.25rem;
+    flex-direction: row;
+    gap: 2rem;
   }
 }
 
 /* Sidebar */
 .doc-side-bar {
   flex: 1;
-  max-width: 250px; /* Set a max width for the sidebar */
-  overflow-y: auto; /* Allow vertical scrolling only */
+  max-width: 250px;
   background-color: #ffffff;
-  border: 1px solid #d1d5db;
+  border: 1px solid #e5e7eb;
   border-radius: 0.75rem;
-  padding: 1rem;
+  padding: 1.25rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
 }
 
 .doc-side-bar::-webkit-scrollbar {
+  width: 4px;
   height: 3px;
 }
 
@@ -40,70 +45,87 @@
 
 .doc-side-para {
   cursor: pointer;
-  border: 1px solid rgb(209, 213, 219);
-  border-radius: 0.25rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
   text-align: center;
-  padding: 1rem 0;
-  margin: 0.5rem 0;
-  transition: all 0.3s ease;
+  padding: 0.875rem 0;
+  margin: 0.75rem 0;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  color: #4b5563;
 }
 
 .doc-side-para:hover {
   background-color: #eff6ff;
-  color: #1e40af;
-  border-color: #3b82f6;
-  font-weight: 600;
+  color: #1d4ed8;
+  border-color: #93c5fd;
+  transform: translateY(-2px);
 }
 
 /* Doctor List Grid */
 .doctor-list {
-  flex: 3; /* Take remaining space beside the sidebar */
+  flex: 3;
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(250px, 1fr)
-  ); /* Responsive grid */
-  gap: 1rem;
-  row-gap: 1.5rem;
-  padding: 1rem;
-  width: 100%; /* Ensure it doesn't overflow */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
 }
 
 /* Doctor Card */
+
 .doctors-card {
   border: 1px solid #e5e7eb;
   border-radius: 0.75rem;
   background-color: #ffffff;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .doctors-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+  border-color: #d1d5db;
 }
 
-.doc-img-color {
+/* Image Container */
+.doctors-card img.doc-img-color {
   width: 100%;
+
+  object-fit: cover;
+  transition: all 0.4s ease;
   background-color: #f3f4f6;
-  object-fit: cover; /* Ensure the image scales properly */
 }
-.doc-img-color:hover {
-  background-color: #e0f2fe;
+
+.doctors-card:hover img.doc-img-color {
+  transform: scale(1.05);
 }
 
 /* Card Content */
-.p-4 {
-  padding: 1rem;
+.doctors-card .p-4 {
+  padding: 1rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
+/* Availability Indicator */
 .doc-avlb {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.doc-avlb p {
   font-size: 0.875rem;
-  color: #22c55e;
+  font-weight: 500;
+  color: #10b981;
+  margin: 0px;
 }
 
 .doc-avlb-sybol {
@@ -111,35 +133,85 @@
   height: 0.5rem;
   background-color: #10b981;
   border-radius: 50%;
+  box-shadow: 0 0 0 rgba(16, 185, 129, 0.4);
+  animation: pulse 2s infinite;
 }
 
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+/* Doctor Name */
 .doc-text-name {
   font-size: 1.125rem;
-  font-weight: 500;
-  margin: 0.5rem 0;
-  color: #1f2937;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 0.375rem 0;
+  line-height: 1.3;
 }
 
+/* Specialty */
 .doc-specality {
   font-size: 0.875rem;
   color: #6b7280;
+  margin: 0;
+  line-height: 1.4;
 }
 
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .doctors-card img.doc-img-color {
+    height: 280px;
+  }
+}
+
+@media (max-width: 640px) {
+  .doctors-card {
+    max-width: 100%;
+  }
+}
 /* Mobile Adjustments */
 @media (max-width: 640px) {
   .doctor-main {
-    flex-direction: column;
+    padding: 1rem;
+    gap: 1.5rem;
   }
 
   .doc-side-bar {
-    overflow-x: auto; /* Prevent overflow */
+    max-width: none;
+    overflow-x: auto;
     margin-bottom: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    width: 100%;
+    position: relative;
+    top: 0;
+  }
+
+  .doc-side-para {
+    flex: 0 0 auto;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    white-space: nowrap;
   }
 
   .doctor-list {
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(200px, 1fr)
-    ); /* Adjust for smaller screens */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .doctor-list {
+    grid-template-columns: 1fr;
   }
 }
