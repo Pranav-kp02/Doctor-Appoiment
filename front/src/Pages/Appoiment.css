@@ -121,12 +121,24 @@
   margin-top: 1rem;
   font-weight: 600;
   color: #374151;
+  display: flex;
+  justify-content: space-between;
 }
 
 .fee2-appoi {
   color: #4b5563;
 }
 
+.chat-button {
+  background-color: #0066cc;
+  border: 1px solid #0066cc;
+  border-radius: 8px;
+  color: white;
+  padding: 5px 15px;
+}
+.chat-button:hover {
+  background-color: #0052a3;
+}
 /* Slot Section */
 .slot-main-appoi {
   margin-top: 4rem;

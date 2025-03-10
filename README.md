@@ -8,6 +8,7 @@ The **Doctor Appointment App** is a web-based platform that allows patients to b
 
 - **User Authentication**: Secure login and registration for patients and doctors.
 - **Appointment Booking**: Easy scheduling of doctor appointments.
+- **Real time chat**: Real time chat with doctors.
 - **Doctor Management**: View doctor profiles, availability, and specialization.
 - **Email Reminders**: Automated appointment reminders using Nodemailer.
 - **Image Uploads**: Upload using Cloudinary.
@@ -22,8 +23,9 @@ The **Doctor Appointment App** is a web-based platform that allows patients to b
 - **Database**: MongoDB
 - **Authentication**: JWT-based authentication
 - **Email Integration**: Nodemailer, Node-corn
+- **Real time chat**: socket.io-client, socket.io
 - **Image Storage**: Cloudinary
-- **Google Oath2**: googleapis,@react-oauth/google
+- **Google Oath2**: googleapis, @react-oauth/google
 - **Deployment**: pending..
 
 ## Installation & Setup

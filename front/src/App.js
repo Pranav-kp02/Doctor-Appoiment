@@ -30,6 +30,8 @@ import ReviewList from "./AdminDash/Componets/ReviewList";
 import Loader from "./Componets/Loader";
 import EmailOtpVerfication from "./Componets/LoginOrReg/EmailOtpVerfication";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import ChatDoctor from "./Pages/ChatDoctor";
+import DocChat from "./DoctorDash/DocComponets/DocChat";
 
 function App() {
   return (
@@ -50,6 +52,7 @@ function App() {
             <Route path="/userAppoiments" element={<MyAppoiment />} />
             <Route path="/reg" element={<Register />} />
             <Route path="/log" element={<LoginForm />} />
+            <Route path="/chat/:id" element={<ChatDoctor />} />
             <Route path="/email-verfiey" element={<EmailOtpVerfication />} />
             {/* admin route */}
             <Route path="/admin" element={<AdminApp />}>
@@ -72,6 +75,7 @@ function App() {
               <Route path="dashboard" element={<DoctorDashboad />} />
               <Route path="doc-appoiment" element={<DoctorAllAppoimnets />} />
               <Route path="doc-patiens" element={<DocPatiens />} />
+              <Route path="doc-chat/:uId" element={<DocChat />} />
               <Route
                 path="doc-appoiment/:status"
                 element={<DoctorAllAppoimnets />}

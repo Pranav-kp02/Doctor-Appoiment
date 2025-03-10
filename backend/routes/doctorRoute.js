@@ -21,7 +21,9 @@ const { appoimentlimiter } = require("../middleWare/rateLimit");
 const docRouter = express.Router();
 
 // register/login
-docRouter.route("/docReg").post(upload.single("image"), docRegister);
+docRouter
+  .route("/docReg")
+  .post(authentication, upload.single("image"), docRegister);
 docRouter.route("/docLog").post(docLogin);
 
 // doc profile and user booking appoiment

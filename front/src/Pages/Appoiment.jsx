@@ -121,6 +121,7 @@ const Appointment = () => {
       toast.error("Please select both date and time");
       return;
     }
+    console.log("on");
 
     try {
       const res = await API.post(`/docProf/${docId}`, data, {
@@ -134,10 +135,12 @@ const Appointment = () => {
         toast.error(res.data.message);
       }
     } catch (error) {
-      const errorMessage =
-        error.response?.data || error.message || "Failed to book appointment";
-      toast.error(errorMessage);
-      console.error("Appointment booking error:", error);
+      toast.error(
+        error.response?.data?.message ||
+          error.response?.data ||
+          "something went wrong"
+      );
+      console.log("Full error response:", error.response?.data);
     }
   };
 

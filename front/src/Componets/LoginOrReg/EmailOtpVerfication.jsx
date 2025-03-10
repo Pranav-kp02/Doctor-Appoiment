@@ -89,7 +89,6 @@ function EmailOtpVerfication() {
   const responseGoogle = async (authResult) => {
     try {
       if (authResult["code"]) {
-        console.log("enter");
         const res = await googleAuth(authResult.code);
         if (res.data.success) {
           toast.success(res.data.message);

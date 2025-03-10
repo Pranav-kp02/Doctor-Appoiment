@@ -2,9 +2,15 @@ import React from "react";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function DoctorInfo() {
+  const navigate = useNavigate();
   const docDetails = useSelector((state) => state.doctors.docDetails);
+
+  const handleChatDoc = (id) => {
+    navigate(`/chat/${id}`);
+  };
 
   return (
     <div className="main-appoi ">
@@ -39,7 +45,13 @@ function DoctorInfo() {
           <p className="disc-about-appoi">{docDetails.about}</p>
         </div>
         <p className="fee-appoi">
-          Appoiment fee: <span className="fee2-appoi">${docDetails.fees}</span>
+          <span className="fee2-appoi">Appoiment fee: ${docDetails.fees}</span>
+          <button
+            className="chat-button"
+            onClick={() => handleChatDoc(docDetails._id)}
+          >
+            chat
+          </button>
         </p>
       </div>
     </div>

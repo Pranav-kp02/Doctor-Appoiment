@@ -143,7 +143,7 @@ const Doctors = () => {
                 <div className="doc-avlb-sybol"></div>
                 <p>Available</p>
               </div>
-              <p className="doc-text-name">Dr. {item.fullName}</p>
+              <p className="doc-text-name"> {item.fullName}</p>
               <p className="doc-specality">{item.speciality}</p>
             </div>
           </div>

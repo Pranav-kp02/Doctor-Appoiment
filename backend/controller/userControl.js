@@ -263,15 +263,6 @@ exports.userProfile = async (req, res) => {
 exports.userUpdate = async (req, res) => {
   const uId = req.id;
 
-  const { userId } = req.params;
-
-  if (uId !== userId) {
-    return res.status(401).json({
-      success: false,
-      message: "user not have permission",
-    });
-  }
-
   if (!uId) {
     return res.status(400).json({
       sucess: false,
@@ -287,7 +278,7 @@ exports.userUpdate = async (req, res) => {
     });
   }
 
-  const user = await User.findById(userId);
+  const user = await User.findById(uId);
   if (!user) {
     return res.status(400).json({
       sucess: false,
@@ -358,18 +349,19 @@ exports.userDelete = async (req, res) => {
 exports.bookAppoiment = async (req, res, next) => {
   const { docId } = req.params;
   const uId = req.id;
+  // console.log(uId);
   const { time, date } = req.body;
 
   if (!uId) {
     return res.status(400).json({
-      sucess: false,
+      success: false,
       message: "pls login to book appoiment",
     });
   }
 
   if (!time || !date) {
     return res.status(400).json({
-      sucess: false,
+      success: false,
       message: "enter full details",
     });
   }
@@ -377,7 +369,7 @@ exports.bookAppoiment = async (req, res, next) => {
   const userData = await User.findById(uId).select("-password");
   if (!userData) {
     return res.status(400).json({
-      sucess: false,
+      success: false,
       message: "pls login to book appoiment",
     });
   }
@@ -386,15 +378,15 @@ exports.bookAppoiment = async (req, res, next) => {
 
   if (banCheck === "inActive") {
     return res.status(400).json({
-      sucess: false,
-      message: "user not allowed login",
+      success: false,
+      message: "user not allowed to login",
     });
   }
 
   const doctor = await Doctor.findById(docId).select("-password");
   if (!doctor) {
     return res.status(404).json({
-      succes: false,
+      success: false,
       message: "doctor not found",
     });
   }
@@ -442,7 +434,7 @@ exports.userAppoimentCancel = async (req, res) => {
   const uId = req.id;
   if (!uId) {
     return res.status(400).json({
-      sucess: false,
+      success: false,
       message: "user inValid",
     });
   }

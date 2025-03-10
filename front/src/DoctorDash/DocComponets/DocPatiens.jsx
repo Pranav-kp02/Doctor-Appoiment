@@ -4,14 +4,20 @@ import { API } from "../../AXIOS";
 import { toast } from "react-hot-toast";
 import styles from "./DocPatiens.module.css";
 import { getPatientData } from "../../REDUX/docAthetication";
+import { useNavigate } from "react-router-dom";
 
 const DocPatiens = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const userDetails = useSelector(
     (state) => state.DoctorAth.patientDetails ?? []
   );
 
   const docId = useSelector((state) => state.DoctorAth.doctor?.id ?? []);
+
+  const handleChat = (uId) => {
+    navigate(`/doctor/doc-chat/${uId}`);
+  };
 
   useEffect(() => {
     const getUserData = async () => {
@@ -48,6 +54,7 @@ const DocPatiens = () => {
               <th>Email</th>
               <th>Total Appointments</th>
               <th>Status</th>
+              <th>chat</th>
             </tr>
           </thead>
           <tbody>
@@ -97,6 +104,14 @@ const DocPatiens = () => {
                         {user.cancelledCount} - Cancelled
                       </span>
                     </div>
+                  </td>
+                  <td className={styles.tableCell}>
+                    <button
+                      className={styles.chatbutton}
+                      onClick={() => handleChat(user.user._id)}
+                    >
+                      chat
+                    </button>
                   </td>
                 </tr>
               ))

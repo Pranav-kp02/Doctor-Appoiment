@@ -14,6 +14,16 @@ exports.googleAuth = async (req, res, next) => {
     );
     const { email, name, picture } = userRes.data;
     let user = await User.findOne({ email });
+    if (user) {
+      const banCheck = user.active;
+
+      if (banCheck === "inActive") {
+        return res.status(400).json({
+          success: false,
+          message: "user not allowed to login",
+        });
+      }
+    }
 
     if (!user) {
       user = await User.create({

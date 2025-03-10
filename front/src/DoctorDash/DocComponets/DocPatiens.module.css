@@ -246,3 +246,14 @@
   color: white;
   padding: 2px;
 }
+
+.chatbutton {
+  background-color: #0066cc;
+  border: 1px solid #0066cc;
+  border-radius: 8px;
+  color: white;
+  padding: 5px 15px;
+}
+.chatbutton:hover {
+  background-color: #0052a3;
+}
